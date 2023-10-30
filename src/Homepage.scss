@@ -1,0 +1,45 @@
+button{
+    border-radius: 30px;
+    background-color: #ff6600;
+    border: none;
+
+    color: white;
+    width: 100%;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: bold;
+    padding: 6px 0;
+    margin: 2rem 0;
+
+    &.hover {
+        cursor: pointer;
+    }
+}
+input{
+    width: 550px;;
+    height: 120px;
+}
+.main{
+    display:flex;
+    justify-content: center;
+}
+.right-column{
+    width:235px;
+}
+.post{
+    width:600px;
+}
+.photo{
+    width:50px;
+    height:50px;
+    background-color: aqua;
+}
+.left-column{
+    width:350px;
+    background-color: #f5f8fa;
+}
+.post, .left-column{
+    border: 3px solid #f5f8fa;    
+}
+.right-column, .post, .left-column{
+    margin:0px 10px;    
+}
