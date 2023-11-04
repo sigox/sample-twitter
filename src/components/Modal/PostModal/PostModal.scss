@@ -1,0 +1,88 @@
+.modalWapper {
+  width: 100vw;
+  height: 100vh;
+  padding-top: 56px;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 3;
+
+  .postModalContianer {
+    position: relative;
+    width: 636px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    border-radius: 14px;
+    background-color: #fff;
+
+    .modalTop {
+      height: 78%;
+      .modalClose {
+        margin-top: 10px;
+        padding: 6px 0px;
+        border-bottom: 1px solid #E6ECF0;
+      
+        .modalCloseIcon {
+            margin-left: 15px;
+            cursor: pointer;
+            fill: #696974;
+      
+            &:hover {
+              fill: #FF6600;
+            }
+        }
+      }
+
+      .modalAvatarImg {
+        display: block;
+        position: absolute;
+        top: 56px;
+        left: 10px;
+      
+      }
+      
+      textarea {
+        width: 85%;
+        height: 40%;
+        font-size: 18px;
+        margin-left: 69px;
+        margin-top: 22px;
+        background: #fff;
+        outline: none;
+        border: none;
+        resize: none;
+
+        &::placeholder {
+          color: #9197A3;
+          font-size: 18px;
+          font-weight: 500;
+        }
+      }
+    }
+
+    .modalBottom {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-right: 10px;
+
+      .alertWord {
+        color: #FC5A5A;
+        font-size: 15px;
+        font-weight: 500;
+      }
+
+      .modalButton {
+        padding: 10px 15px 10px 15px;
+        color: white;
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+        border-radius: 50px;
+        background-color: #FF6600;
+      }
+    }
+  }
+}

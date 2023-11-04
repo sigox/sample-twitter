@@ -85,6 +85,10 @@
 
             .close {
               fill: #696974;
+
+              &:hover {
+                fill: #FF6600;
+              }
             }
           }
         }
