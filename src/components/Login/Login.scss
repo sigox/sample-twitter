@@ -35,8 +35,6 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        color: #696974;
-        background-color: #F5F8FA;
 
         label {
           text-align: start;
@@ -44,6 +42,8 @@
           padding-left: 11px;
           font-size: 14px;
           border: 0px;
+          color: #696974;
+          background-color: #F5F8FA;
         }
 
         input[type=text],

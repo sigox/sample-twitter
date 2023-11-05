@@ -28,9 +28,9 @@ export const AuthInput = (
     label,
     placeholder,
     onChange,
-    valuelength,
-    textlength,
+    maxLength,
   }) => {
+
   return (
     <div className='formContainer'>
       <div className='group'>
@@ -42,18 +42,18 @@ export const AuthInput = (
           value={value}
           placeholder={placeholder}
           onChange={(event) => onChange?.(event.target.value)}
-          valuelength={valuelength}
-          textlength={textlength}
+          maxLength={maxLength}
         />
         <div className="alerGroup">
-          {value.length > textlength && <div className="alertBox">
+          {value ? value.length >= maxLength && 
+          <div className="alertBox">
             <span className='alert'>字數超過上限!</span>
-          </div>
+            </div> :  <div></div>
           }
           <div className="numAlertBox">
-            <span className='lengthNum'>{valuelength}</span>
+            <span className='lengthNum'>{value? value.length : '0'}</span>
             /
-            <span className='fityNum'>{textlength}</span>
+            <span className='fityNum'>{maxLength}</span>
           </div>
 
         </div>
@@ -193,8 +193,7 @@ export const SignUp = () => {
             // checkAccount(accountInputValue)
             setAccount(accountInputValue)
           }}
-          valuelength={account.length}
-          textlength="20"
+          maxLength="20"
         />
         <AuthInput
           type="text"
@@ -207,8 +206,7 @@ export const SignUp = () => {
             // checkName(nameInputValue)
             setName(nameInputValue)
           }}
-          valuelength={name.length}
-          textlength="50"
+          maxLength="50"
         />
         <AuthInput
           type="text"
@@ -221,8 +219,7 @@ export const SignUp = () => {
             // checkEmail(emailInputValue)
             setEmail(emailInputValue)
           }}
-          valuelength={email.length}
-          textlength="50"
+          maxLength="50"
         />
         <AuthInput
           type="password"
@@ -232,8 +229,7 @@ export const SignUp = () => {
           value={password}
           placeholder="請設定密碼"
           onChange={(passwordInputValue) => setPassword(passwordInputValue)}
-          valuelength={password.length}
-          textlength="50"
+          maxLength="50"
 
         />
         <AuthInput
@@ -244,8 +240,7 @@ export const SignUp = () => {
           value={passwordCheck}
           placeholder="請再次輸入密碼"
           onChange={(passwordAgnInputValue) => setPasswordCheck(passwordAgnInputValue)}
-          valuelength={passwordCheck.length}
-          textlength="50"
+          maxLength="50"
         />
       </form>
 
