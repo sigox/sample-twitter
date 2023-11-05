@@ -1,0 +1,292 @@
+.modalWapper {
+  width: 100vw;
+  height: 100vh;
+  padding-top: 56px;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 3;
+
+  .editModalContianer {
+    position: relative;
+    width: 636px;
+    height: 610px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    border-radius: 14px;
+    background-color: #fff;
+
+    .topSection {
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #E6ECF0;
+
+      .topLeft {
+        width: 29%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .modalClose {
+          margin-top: 10px;
+          padding-bottom: 9px;
+          z-index: 5;
+
+          .modalCloseIcon {
+            margin-left: 15px;
+            cursor: pointer;
+            fill: #696974;
+            
+            &:hover {
+              fill: #FF6600;
+            }
+          }
+
+        }
+
+        .editData {
+          height: 26px;
+          font-size: 18px;
+          font-weight: 700;
+        }
+
+
+      }
+
+      .topRight {
+        .modalStore {
+          padding: 8px 16px 8px 16px;
+          margin-right: 10px;
+          color: white;
+          font-size: 18px;
+          font-weight: 600;
+          cursor: pointer;
+          border: none;
+          border-radius: 50px;
+          background-color: #FF6600;
+        }
+      }
+    }
+
+    .middleSection {
+      .banner-part {
+        position: relative;
+
+        .imgBanner {
+          max-width: 100%;
+        }
+
+        .inputBanner {
+          position: absolute;
+          top: 96px;
+          left: 252px;
+          opacity: 0;
+          z-index: 8;
+
+          &::file-selector-button {
+            cursor: pointer;
+          }
+        }
+
+        .editIcons {
+          position: absolute;
+          top: 96px;
+          left: 277px;
+          display: flex;
+          justify-content: space-between;
+          width: 80px;
+          
+          .addBanner {
+            fill: #fff;
+            cursor: pointer;
+          }
+
+          .closeBanner {
+            fill: #fff;
+            cursor: pointer;
+            z-index: 8;
+          }
+        }
+      }
+
+      .user-img-part {
+        position: absolute;
+        top: 180px;
+        left: 16px;
+
+        .editModalAvatarImg {
+          position: relative;
+          width: 140px;
+          height: 140px;
+          border-radius: 50%;
+          border: 4px solid #fff;
+        }
+
+        .avatarCover {
+          position: absolute;
+          top: 3px;
+          left: 5px;
+          width: 131px;
+          height: 131px;
+          border-radius: 50%;
+          background-color: rgba(0, 0, 0, 0.5);
+
+          .inputAvatar {
+            position: absolute;
+            top: 51px;
+            left: 33px;
+            z-index: 5;
+            opacity: 0;
+
+            &::file-selector-button {
+              cursor: pointer;
+            }
+          }
+
+          .addAvatar {
+            position: absolute;
+            top: 53px;
+            left: 56px;
+            fill: #fff;
+            cursor: pointer;
+          
+          }
+        }
+
+      }
+    }
+
+    .bottomSection {
+      padding-top: 80px;
+
+      .formContainer {
+          width: 95%;
+          margin: 0 auto;
+          padding-bottom: 13px;
+      
+          .group {
+            width: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+      
+            label {
+              text-align: start;
+              padding: 5px 0;
+              padding-left: 11px;
+              font-size: 14px;
+              border: 0px;
+              color: #696974;
+              background-color: #F5F8FA;
+            }
+      
+            input[type=text],
+            input[type=password] {
+              padding: 5px 0;
+              padding-left: 13px;
+              font-size: 16px;
+              color: #696974;
+              border: 0px solid #F5F8FA;
+              background-color: #F5F8FA;
+              border-bottom: 2px solid #657786;
+      
+              &:focus {
+                outline: none;
+                border-bottom: 2px solid #50B5FF;
+              }
+      
+              &::placeholder {
+                color: #B5B5BE;
+              }
+            }
+      
+            .alerGroup {
+              position: relative;
+              font-size: 12px;
+              display: flex;
+      
+              .alertBox {
+                position: absolute;
+                width: 100%;
+                top: -2px;
+                left: 0px;
+                text-align: start;
+                border-top: 3px solid #fC5A5A;
+                z-index: 3;
+      
+                .alert {
+                  color: #fC5A5A;
+                  left: 0%;
+                  top: 0%;
+                }
+              }
+      
+              .numAlertBox {
+                width: 100%;
+                text-align: end;
+              }
+            }
+          }
+      }
+
+      .introTeaxtarea {
+        .introLabel {
+          // outline: 1px solid tomato;
+          width: 95%;
+          height: 147px;
+          margin: 0 auto;
+          padding-left: 11px;
+          padding-top: 5px;
+          display: flex;
+          flex-direction: column;
+          font-size: 14px;
+          font-weight: 400;
+          color: #696974;
+          background-color: #F5F8FA;
+          border-bottom: 2px solid #657786;
+
+          textarea {
+            color: #696974;
+            font-size: 16px;
+            font-weight: 400;
+            background-color: #F5F8FA;
+            outline: none;
+            border: none;
+            resize: none;
+
+            &::placeholder {
+              color: #9197A3;
+              font-size: 16px;
+              font-weight: 400;
+            }
+
+          }
+        }
+
+        .alertBox {
+          position: relative;
+          width: 95%;
+          margin: 0 auto;
+          display: flex;
+          justify-content: flex-end;
+          font-size: 12px;
+          font-weight: 500;
+
+          .introAlert {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            color: #fC5A5A;
+          }
+
+          .introAlertblank {
+            width: 1px;
+          }
+        }
+      }
+    }
+  }
+
+}
