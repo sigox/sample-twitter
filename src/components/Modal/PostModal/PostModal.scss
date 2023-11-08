@@ -1,0 +1,105 @@
+.modal-header{
+  .btn-close{
+    margin: 0px;
+  }
+}
+
+.modal-body {
+
+  .postModalContianer {
+    position: relative;
+    height: 200px;
+    display: flex;
+    margin: 0 auto;
+    
+      .modalClose {
+        margin-top: 10px;
+        padding: 6px 0px;
+        border-bottom: 1px solid #E6ECF0;
+      
+        .modalCloseIcon {
+            margin-left: 15px;
+            cursor: pointer;
+            fill: #696974;
+      
+            &:hover {
+              fill: #FF6600;
+            }
+        }
+      }
+
+      .modalAvatarImg {
+        position: absolute;
+        left: 10px;      
+      }
+      
+      textarea {
+        width: 85%;
+        height: 40%;
+        font-size: 18px;
+        margin-left: 69px;
+        outline: none;
+        border: none;
+        resize: none;
+
+        &::placeholder {
+          color: #9197A3;
+          font-size: 18px;
+          font-weight: 500;
+        }
+      }
+    
+
+    .modalBottom {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-right: 10px;
+
+      .alertWord {
+        color: #FC5A5A;
+        font-size: 15px;
+        font-weight: 500;
+      }
+
+      .modalButton {
+        padding: 10px 15px 10px 15px;
+        color: white;
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+        border-radius: 50px;
+        background-color: #FF6600;
+      }
+    }
+  }
+}
+.modal-content{
+  width:600px;
+  .modal-footer{
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-right: 10px;
+
+      .alertWord {
+        color: #FC5A5A;
+        font-size: 15px;
+        font-weight: 500;
+      }
+
+      .modalButton {
+        padding: 10px 15px 10px 15px;
+        color: white;
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+        border-radius: 50px;
+        background-color: #FF6600;
+      }
+    }
+}

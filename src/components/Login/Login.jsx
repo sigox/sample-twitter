@@ -86,8 +86,7 @@ export const Login = () => {
           value={account}
           placeholder="請輸入帳號"
           onChange={(accountInputValue) => setAccount(accountInputValue)}
-          valuelength={account.length}
-          textlength="20"
+          maxLength="20"
         />
         <AuthInput
           id="password"
@@ -97,8 +96,7 @@ export const Login = () => {
           value={password}
           placeholder="請輸入密碼"
           onChange={(passwordInputValue) => setPassword(passwordInputValue)}
-          valuelength={password.length}
-          textlength="50"
+          maxLength="50"
         />
       </form>
       <div className='btnGroup'>
@@ -113,7 +111,7 @@ export const Login = () => {
           </a>
 
           <span className='point'>&bull;</span>
-          <Link to="http://localhost:3000/admin-login" className='back-signup-link'>
+          <Link to="/admin-login" className='back-signup-link'>
             後台登入
           </Link>
         </div>

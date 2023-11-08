@@ -1,10 +1,14 @@
 import './App.scss';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+//import { HomePage } from 'pages/HomePage/HomePage';
 import { LoginPage } from 'pages/LoginPage/LoginPage.jsx';
 import { SignUpPage } from 'pages/SignUpPage/SignUpPage';
 import { AdminLoginPage } from 'pages/AdminLoginPage/AdminLoginPage';
 import { AdminMainPage } from 'pages/AdminMainPage/AdminMainPage';
 import { AdminUserPage } from 'pages/AdminUserPage/AdminUserPage';
+import MainPage from 'pages/MainPage/MainPage';
+import PersonalMainPage from 'pages/MainPage/PersonalMainPage';
+import SettingPage from 'pages/MainPage/SettingPage';
 
 
 function App() {
@@ -17,8 +21,10 @@ function App() {
           <Route path="signup" element={<SignUpPage />} />
           <Route path="admin_main" element={<AdminMainPage />} />
           <Route path="admin_users" element={<AdminUserPage />} />
-          {/* <Route path="main" element={<HomePage />} /> */}
-          {/* <Route path="*" element={<LoginPage />} /> */}
+          <Route path="main" element={<MainPage />} />
+          <Route path="users" element={<PersonalMainPage />} />
+          <Route path="setting" element={<SettingPage />} />
+          <Route path="*" element={<LoginPage />} />
         </Routes>
       </BrowserRouter>
     </div>
