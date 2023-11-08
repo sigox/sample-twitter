@@ -111,7 +111,7 @@ export const Login = () => {
           </a>
 
           <span className='point'>&bull;</span>
-          <Link to="http://localhost:3000/admin-login" className='back-signup-link'>
+          <Link to="/admin-login" className='back-signup-link'>
             後台登入
           </Link>
         </div>
