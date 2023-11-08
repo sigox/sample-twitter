@@ -2,7 +2,6 @@
 
   .editModalContianer {
     position: relative;
-    height: 610px;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
@@ -222,51 +221,48 @@
   }
 }
 .modal-header {
-      height: 58px;
+  height: 58px;
 
-      .topLeft {
-        width: 29%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+  .topLeft {
+    width: 29%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-        .modalClose {
-          margin-top: 10px;
-          padding-bottom: 9px;
-          z-index: 5;
+    .modalClose {
+      margin-top: 10px;
+      padding-bottom: 9px;
+      z-index: 5;
 
-          .modalCloseIcon {
-            margin-left: 15px;
-            cursor: pointer;
-            fill: #696974;
+      .modalCloseIcon {
+        margin-left: 15px;
+        cursor: pointer;
+        fill: #696974;
             
-            &:hover {
-              fill: #FF6600;
-            }
-          }
-
-        }
-
-        .editData {
-          height: 26px;
-          font-size: 18px;
-          font-weight: 700;
-        }
-
-
-      }
-
-      .topRight {
-        .modalStore {
-          padding: 8px 16px 8px 16px;
-          margin:0px;
-          color: white;
-          font-size: 18px;
-          font-weight: 600;
-          cursor: pointer;
-          border: none;
-          border-radius: 50px;
-          background-color: #FF6600;
+        &:hover {
+          fill: #FF6600;
         }
       }
     }
+
+    .editData {
+      height: 26px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+  }
+
+  .topRight {
+    .modalStore {
+      padding: 8px 16px 8px 16px;
+      margin:0px;
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      border-radius: 50px;
+      background-color: #FF6600;
+    }
+  }
+}

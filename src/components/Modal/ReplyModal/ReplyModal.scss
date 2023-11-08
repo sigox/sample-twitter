@@ -1,5 +1,4 @@
 .modalWapper {
-  height: 400px;
 
   .replyModalContianer {
     position: relative;
@@ -167,6 +166,9 @@
         fill: #FF6600;
       }
     }
+  }
+  .modalWapper {
+    height: 400px;
   }
   .modal-footer{
     border-top: none;
