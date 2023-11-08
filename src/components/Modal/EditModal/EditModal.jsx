@@ -25,6 +25,7 @@ export const EditModal = () => {
   }
 
   return (
+
     <div className="modal fade" id="edit" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div className="modal-dialog">
         <div className="modal-content">
@@ -43,6 +44,7 @@ export const EditModal = () => {
               </button>
             </div>
           </div>
+
           <div className="modal-body">
             <div className='modalWapper'>
               <div className='editModalContianer'>
@@ -122,6 +124,7 @@ export const EditModal = () => {
             </div>
           </div>
         </div>
+
       </div>
     </div>
   )

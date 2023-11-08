@@ -28,9 +28,9 @@ export const AuthInput = (
     label,
     placeholder,
     onChange,
-    valuelength,
     maxLength,
   }) => {
+
   return (
     <div className='formContainer'>
       <div className='group'>
@@ -45,12 +45,13 @@ export const AuthInput = (
           maxLength={maxLength}
         />
         <div className="alerGroup">
-          {value.length > maxLength && <div className="alertBox">
+          {value ? value.length >= maxLength && 
+          <div className="alertBox">
             <span className='alert'>字數超過上限!</span>
-          </div>
+            </div> :  <div></div>
           }
           <div className="numAlertBox">
-            <span className='lengthNum'>{value.length}</span>
+            <span className='lengthNum'>{value? value.length : '0'}</span>
             /
             <span className='fityNum'>{maxLength}</span>
           </div>
@@ -192,7 +193,6 @@ export const SignUp = () => {
             // checkAccount(accountInputValue)
             setAccount(accountInputValue)
           }}
-          valueLength={account.length}
           maxLength="20"
         />
         <AuthInput
@@ -206,7 +206,6 @@ export const SignUp = () => {
             // checkName(nameInputValue)
             setName(nameInputValue)
           }}
-          valueLength={name.length}
           maxLength="50"
         />
         <AuthInput
@@ -220,7 +219,6 @@ export const SignUp = () => {
             // checkEmail(emailInputValue)
             setEmail(emailInputValue)
           }}
-          valueLength={email.length}
           maxLength="50"
         />
         <AuthInput
@@ -231,7 +229,6 @@ export const SignUp = () => {
           value={password}
           placeholder="請設定密碼"
           onChange={(passwordInputValue) => setPassword(passwordInputValue)}
-          valueLength={password.length}
           maxLength="50"
 
         />
@@ -243,7 +240,6 @@ export const SignUp = () => {
           value={passwordCheck}
           placeholder="請再次輸入密碼"
           onChange={(passwordAgnInputValue) => setPasswordCheck(passwordAgnInputValue)}
-          valueLength={passwordCheck.length}
           maxLength="50"
         />
       </form>

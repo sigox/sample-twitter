@@ -1,6 +1,6 @@
 import './App.scss';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-//import { HomePage } from 'pages/HomePage/HomePage';
+import { HomePage } from 'pages/HomePage/HomePage';
 import { LoginPage } from 'pages/LoginPage/LoginPage.jsx';
 import { SignUpPage } from 'pages/SignUpPage/SignUpPage';
 import { AdminLoginPage } from 'pages/AdminLoginPage/AdminLoginPage';
@@ -24,7 +24,7 @@ function App() {
           <Route path="main" element={<MainPage />} />
           <Route path="users" element={<PersonalMainPage />} />
           <Route path="setting" element={<SettingPage />} />
-          <Route path="*" element={<LoginPage />} />
+          <Route path="*" element={<HomePage />} />
         </Routes>
       </BrowserRouter>
     </div>
