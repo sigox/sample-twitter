@@ -49,6 +49,11 @@ h2 {
           border: 0px;
           color: #696974;
           background-color: #F5F8FA;
+
+          .mustInput {
+            color: red;
+            margin-left: 3px;
+          }
         }
 
         input[type=text],

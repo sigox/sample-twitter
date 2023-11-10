@@ -1,10 +1,11 @@
-import './SignUp.scss'
-import { useState } from 'react'  //記得加useEffect
-import { ReactComponent as LogoIcon } from 'assets/images/ac-logo.svg'
-import { useNavigate } from 'react-router'
+import './SignUp.scss';
+import Swal from 'sweetalert2';
+import { useState } from 'react'; //記得加useEffect
+import { ReactComponent as LogoIcon } from 'assets/images/ac-logo.svg';
 
 // API
-// import { signup } from 'api/auth'
+import { register } from 'api/auth';
+import { useNavigate } from 'react-router-dom';
 
 // 信箱格式規範
 // const emailRule = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
@@ -13,28 +14,32 @@ export const TopIcon = ({ title }) => {
   return (
     <>
       <div className="iconBox">
-        <LogoIcon className='icon' />
+        <LogoIcon className="icon" />
       </div>
-      <h2 className='iconTitle'>{title}</h2>
+      <h2 className="iconTitle">{title}</h2>
     </>
-  )
-}
+  );
+};
 
-export const AuthInput = (
-  { id,
-    name,
-    type,
-    value,
-    label,
-    placeholder,
-    onChange,
-    maxLength,
-  }) => {
+export const AuthInput = ({
+  id,
+  name,
+  type,
+  value,
+  label,
+  placeholder,
+  onChange,
+  maxLength,
+}) => {
+  const minLength = 4;
 
   return (
-    <div className='formContainer'>
-      <div className='group'>
-        <label htmlFor={id}>{label}</label>
+    <div className="formContainer">
+      <div className="group">
+        <label htmlFor={id}>
+          {label}
+          <span className="mustInput">*</span>
+        </label>
         <input
           id={id}
           name={name}
@@ -45,136 +50,132 @@ export const AuthInput = (
           maxLength={maxLength}
         />
         <div className="alerGroup">
-          {value ? value.length >= maxLength && 
-          <div className="alertBox">
-            <span className='alert'>字數超過上限!</span>
-            </div> :  <div></div>
-          }
+          {value ? (
+            (value.length < minLength || value.length >= maxLength) && (
+              <div className="alertBox">
+                <span className="alert">
+                  請符合{minLength}~{maxLength}字
+                </span>
+              </div>
+            )
+          ) : (
+            <div></div>
+          )}
           <div className="numAlertBox">
-            <span className='lengthNum'>{value? value.length : '0'}</span>
-            /
-            <span className='fityNum'>{maxLength}</span>
+            <span className="lengthNum">{value ? value.length : '0'}</span>/
+            <span className="fityNum">{maxLength}</span>
           </div>
-
         </div>
-
       </div>
     </div>
-  )
-}
+  );
+};
 
 export const OrangeBtn = ({ way, onClick }) => {
   return (
-    <button
-      className='orange'
-      onClick={onClick}
-    >
+    <button className="orange" onClick={onClick}>
       {way}
     </button>
-  )
-}
-
-
+  );
+};
 
 export const SignUp = () => {
-  const navigate = useNavigate()
 
   // 各input的儲存狀態變數
-  const [account, setAccount] = useState('')
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [passwordCheck, setPasswordCheck] = useState('')
-
-  // 設定5格input提示，沒通過會跳出，以及驗證全部是否通過
-  // const [accountAlert, setAccountAlert] = useState(false)
-  // const [nameAlert, setNameAlert] = useState(false)
-  // const [emailAlert, setEmailAlert] = useState(false)
-
-  // 設置驗證狀態
-  // const [accountIsValid, setAccountIsValid] = useState(false)
-  // const [nameIsValid, setNameIsValid] = useState(false)
-  // const [emailIsValid, setEmailIsValid] = useState(false)
-  // const [passwordIsValid, setPasswordIsValid] = useState(false)
-  // const [passwordCheckIsValid, setPasswordCheckIsValid] = useState(false)
-
-  // 驗證函式，input改變時執行
-  // 帳號大於20個字，即不通過
-  // function checkAccount(inputValue) {
-  //   if (inputValue.trim().length > 20) {
-  //     return setAccountAlert(true)
-  //   } else {
-  //     setAccountAlert(false)
-  //     setAccountIsValid(true)
-  //   }
-  // }
-
-  //名稱大於50個字，即不通過
-  // function checkName(inputValue) {
-  //   if (inputValue.trim().length > 50) {
-  //     return setNameAlert(true)
-  //   } else {
-  //     setNameAlert(false)
-  //     setNameIsValid(true)
-  //   }
-  // }
-
-  //如果不符合email撰寫規格，就不通過
-  // function checkEmail(inputValue) {
-  //   if (!emailRule.test(inputValue)) {
-  //     return setEmailAlert(true)
-  //   } else {
-  //     setEmailAlert(false)
-  //     setEmailIsValid(true)
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   account ? setAccountIsValid(true) : setAccountIsValid(false)
-  //   name ? setNameIsValid(true) : setNameIsValid(false)
-  //   email ? setEmailIsValid(true) : setEmailIsValid(false)
-  //   password ? setPasswordIsValid(true) : setPasswordCheckIsValid(false)
-  //   passwordCheck ? setPasswordCheckIsValid(true) : setPasswordCheckIsValid(false)
-  // })
-
+  const [account, setAccount] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [checkPassword, setCheckPassword] = useState('');
+  const navigate = useNavigate
 
   // 表單送出函式，當驗證全通過時才會送出
   const onFormSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    // 認證不通過：不送出
-    // if (!accountIsValid || !nameIsValid || !emailIsValid || !passwordIsValid || !passwordCheckIsValid) {
-    //   return
-    // }
+    // 輸入值皆為零
+    if (
+      account.trim().length === 0 ||
+      name.trim().length === 0 ||
+      email.trim().length === 0 ||
+      password.trim().length === 0
+    ) {
+      Swal.fire({
+        icon: 'error',
+        title: '註冊失敗',
+        text: '輸入框不為零。',
+      });
 
-    // 「密碼」與「密碼再確認」不相同：不送出，彈出警告視窗
-    // if (password !== passwordCheck) {
-    //   Swal.fire({
-    //     icon: 'error',
-    //     title: '註冊失敗',
-    //     text: '輸入兩組密碼不相符，請再重新確認。',
-    //   })
-    //   return
-    // }
+      return;
+    }
 
-    // 執行非同步
-    // const response = await signup({ account, name, email, password, passwordCheck })
+    // 『密碼』與『密碼再確認』不相同
+    if (password !== checkPassword) {
+      Swal.fire({
+        icon: 'error',
+        title: '註冊失敗',
+        text: '輸入兩組密碼不相符，請再重新確認。',
+      });
 
-    // if(!response) {
-    //   Swal.fire({
-    //     icon: 'error',
-    //     title: '註冊失敗',
-    //     text: '帳號已重複註冊',
-    //   })
-    //   return
-    // }
+      return;
+    }
 
+    try {
+      const response = await register({
+        account,
+        name,
+        email,
+        password,
+        checkPassword,
+      });
 
+      // 檢查是否註冊成功
+      // console.log('註冊成功');
+      // console.log(response);
 
-    // 送出後清空
-    navigate('/login')
-  }
+      if (response.data.status === 'success') {
+        Swal.fire({
+          position: 'top',
+          title: '註冊成功！即可登入',
+          timer: 1000,
+          icon: 'success',
+          showConfirmButton: false,
+        });
+        
+        navigate('/login')
+        return
+      }
 
+    } catch (error) {
+
+      // 檢查是否註冊失敗
+      // console.log('註冊失敗');
+
+      // account重複註冊
+      if (error.response.data.data['Error Message'] === 'account used') {
+        Swal.fire({
+          icon: 'error',
+          title: '註冊失敗',
+          text: '『帳號』已重複註冊',
+        });
+        return;
+      }
+
+      // email重複註冊
+      if (error.response.data.data['Error Message'] === 'email used') {
+        Swal.fire({
+          icon: 'error',
+          title: '註冊失敗',
+          text: '『email』已重複註冊',
+        });
+        return;
+      }
+
+      // 檢查是否抓到錯誤的回傳值
+      // console.log(error.response.data.data['Error Message'])
+    }
+
+  };
 
   return (
     <div className="SignUpcontainer">
@@ -190,8 +191,7 @@ export const SignUp = () => {
           value={account}
           placeholder="請輸入帳號"
           onChange={(accountInputValue) => {
-            // checkAccount(accountInputValue)
-            setAccount(accountInputValue)
+            setAccount(accountInputValue);
           }}
           maxLength="20"
         />
@@ -203,10 +203,9 @@ export const SignUp = () => {
           value={name}
           placeholder="請輸入使用者名稱"
           onChange={(nameInputValue) => {
-            // checkName(nameInputValue)
-            setName(nameInputValue)
+            setName(nameInputValue);
           }}
-          maxLength="50"
+          maxLength="20"
         />
         <AuthInput
           type="text"
@@ -216,8 +215,7 @@ export const SignUp = () => {
           value={email}
           placeholder="請輸入Email"
           onChange={(emailInputValue) => {
-            // checkEmail(emailInputValue)
-            setEmail(emailInputValue)
+            setEmail(emailInputValue);
           }}
           maxLength="50"
         />
@@ -229,30 +227,30 @@ export const SignUp = () => {
           value={password}
           placeholder="請設定密碼"
           onChange={(passwordInputValue) => setPassword(passwordInputValue)}
-          maxLength="50"
-
+          maxLength="20"
         />
         <AuthInput
           type="password"
           id="password-2"
           name="password-2"
           label="密碼確認"
-          value={passwordCheck}
+          value={checkPassword}
           placeholder="請再次輸入密碼"
-          onChange={(passwordAgnInputValue) => setPasswordCheck(passwordAgnInputValue)}
-          maxLength="50"
+          onChange={(passwordAgnInputValue) =>
+            setCheckPassword(passwordAgnInputValue)
+          }
+          maxLength="20"
         />
       </form>
 
-      <div className='btnGroup'>
-        <OrangeBtn
-          way="註冊"
-          onClick={onFormSubmit}
-        />
-        <div className='aLink'>
-          <a href="http://localhost:3000/login" className='cancel-link'>取消</a>
+      <div className="btnGroup">
+        <OrangeBtn way="註冊" onClick={onFormSubmit} />
+        <div className="aLink">
+          <a href="/login" className="cancel-link">
+            取消
+          </a>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

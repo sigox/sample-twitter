@@ -1,6 +1,9 @@
 import './AdminTweet.scss'
 // import { useState, useEffect } from 'react'
-// import { getAllTweetsAdmin, deleteTweetAdmin } from 'api/tweets'
+// import { getAllTweetsAdmin } from 'api/admin'
+// , deleteTweetAdmin
+
+// import avatarDefulat from 'assets/images/default_avatar.svg';
 import { ReactComponent as CloseIcon } from 'assets/icons/close.svg'
 import { ReactComponent as DefultAvatar } from 'assets/images/default_avatar.svg'
 
@@ -10,15 +13,15 @@ export const TweetTitle = ({ title }) => {
 }
 
 // TweetItem 子元件
-export const AdminTweetItem = (   //需加 { }
-  // avatar,
-  // tweet,
-  // name,
-  // account,
-  // time,
-  // content,
-  // onClick,
-) => {
+export const AdminTweetItem = ( {  
+  avatar,
+  tweet,
+  name,
+  account,
+  time,
+  content,
+  onClick,
+}) => {
 
   // const authToken = localStorage.getItem("authToken")
 
@@ -26,8 +29,11 @@ export const AdminTweetItem = (   //需加 { }
   return (
     <div className="AdminTweetItem">
       <div className="avatarBox">
-        {/* src +　{avatar} */}
-        {/* <img className="avatarImg" src="" alt="loading" /> */}
+        {/* <img
+          className="avatarImg"
+          src={avatar ? avatar : avatarDefulat}
+          alt="loading"
+        /> */}
         <DefultAvatar className="avatarImg" />
       </div>
       <div className="tweetText">
@@ -38,20 +44,22 @@ export const AdminTweetItem = (   //需加 { }
             {/* 加 {account}·{time} */}
             <span className="smallText">@apple</span>
           </div>
-          <div className='closeBox'>
+          <div className="closeBox">
             <CloseIcon
-              className='close'
-            // onClick={() => onClick?.({ authToken: authToken, id: tweet.id })}
+              className="close"
+              // onClick={() => onClick?.({ authToken: authToken, id: tweet.id })}
             />
           </div>
         </div>
         <div className="tweetContent">
           {/* {content} */}
-          Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.
+          Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco
+          cillum dolor. Voluptate exercitation incididunt aliquip deserunt
+          reprehenderit elit laborum.
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 // TweetList 父元件
