@@ -10,6 +10,7 @@
       display: inline-block;
       width: 40px;
       height: 40px;
+      margin-bottom: 20px;
 
       .icon {
         width: 100%;
@@ -18,9 +19,9 @@
     }
 
     .iconTitle {
+      font-size: 28px;
       font-weight: 700;
       padding-bottom: 20px;
-      padding-top: 10px;
     }
 
     form {
