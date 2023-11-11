@@ -1,0 +1,111 @@
+button{
+    border-radius: 30px;
+    background-color: #ff6600;
+    border: 2px solid #ff6600;
+
+    color: white;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: bold;
+    padding: 6px 12px;
+
+    &.hover {
+        cursor: pointer;
+    }
+}
+.button-nonactive{
+    background-color: transparent;
+}
+.main{
+    display:grid;
+    grid-gap: 30px;
+    grid-template-columns: 1fr auto 600px 350px 1fr;
+}
+.right-column{
+    width:235px;
+    button{
+        margin: 2rem 0;
+    }
+}
+.post{
+    width:600px;
+    .new-post{
+        border-bottom: 10px solid #e6ecf0;
+        text-align: right;
+        .new-post-content{
+            padding: 10px 10px 0px 10px;
+            display:flex;
+        }
+    }    
+    button{
+        font-size: 1em;
+        
+        margin: 0px 10px 10px 0px;
+        
+    }
+    .user-post{
+        padding: 10px;
+        border-bottom: 1px solid #e6ecf0;
+        display:flex;
+        .post-content{
+            padding: 0px 15px;
+            width: 85%;
+            text-align:left;
+            p{
+                margin: 0px 0px 5px 0px;
+            }            
+        }
+    }
+    .personal-top button{
+        background-color: inherit;
+        color: #f60;
+    }
+}
+.main-title{
+        border-bottom: 3px solid #e6ecf0;
+        margin:0px;
+        padding-left: 20px;
+        line-height: 2.5em;
+        font-size: 2.5ex;
+        font-weight: 700;
+        text-align: left;
+    }
+.stat{
+    display:flex;
+    .stat-item{
+        margin-right: 30px;
+        i{
+            margin-right: 5px;
+        }
+    }
+}
+.photo{
+    width:50px;
+    height:50px;
+    margin-right: 5px;
+    background-color: #c4c4c4;
+    border-radius: 50%;
+}
+.left-column{
+    margin-top:20px;
+    width:350px;
+    background-color: #e6ecf0;
+    border-radius: 10px;
+}
+.user{
+    padding:10px;
+    border-top:1px solid #c4c4c4;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    .name{
+        flex-grow: 1;
+        text-align:left;
+        padding-left: 10px;
+    }
+    p{
+        margin:0px;
+    }
+}
+.post, .left-column{
+    border: 3px solid #e6ecf0;    
+}

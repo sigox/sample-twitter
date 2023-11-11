@@ -1,34 +1,32 @@
-import './AdminLoginPage.scss'
+import './AdminLoginPage.scss';
 
-import Swal from 'sweetalert2'
-import { useState, useContext, useEffect } from 'react'
-import { useNavigate } from "react-router";
-import { Link } from 'react-router-dom'
-import { AuthInput } from 'components/SignUp/SignUp'
-import { TopIcon } from 'components/SignUp/SignUp'
-import { OrangeBtn } from 'components/SignUp/SignUp'
-import { AuthContext } from 'contexts/AuthContext.jsx'
-
+import Swal from 'sweetalert2';
+import { useState, useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
+import { AuthInput } from 'components/SignUp/SignUp';
+import { TopIcon } from 'components/SignUp/SignUp';
+import { OrangeBtn } from 'components/SignUp/SignUp';
+import { AuthContext } from 'context/AuthContext.jsx';
 
 export const AdminLoginPage = () => {
-  const [account, setAccount] = useState('')
-  const [password, setPassword] = useState('')
-  const navigate = useNavigate()
-  const { adminLogin, setIsAdminAuthenticated } = useContext(AuthContext)
+  const [account, setAccount] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const { adminLogin, setIsAdminAuthenticated } = useContext(AuthContext);
 
   const handleSubmit = (event) => {
-    event.preventDefault()
-  }
+    event.preventDefault();
+  };
 
   const handleClick = async () => {
     // 檢查格式是否符合需求
-    if (account.trim().length === 0 || password.trim().length === 0) return
-
+    if (account.trim().length === 0 || password.trim().length === 0) return;
 
     try {
-      const response = await adminLogin({ account, password })
+      const response = await adminLogin({ account, password });
 
-      if (response.data.status === "success") {
+      if (response.data.status === 'success') {
         // 登入成功訊息
         Swal.fire({
           position: 'top',
@@ -37,12 +35,11 @@ export const AdminLoginPage = () => {
           icon: 'success',
           showConfirmButton: false,
         });
-        setIsAdminAuthenticated(true)
-        navigate('/admin_main')
+        setIsAdminAuthenticated(true);
+        navigate('/admin_main');
       }
-
     } catch (error) {
-      setIsAdminAuthenticated(false)
+      setIsAdminAuthenticated(false);
 
       // 登入失敗訊息
       Swal.fire({
@@ -52,33 +49,31 @@ export const AdminLoginPage = () => {
         icon: 'error',
         showConfirmButton: false,
       });
-      return
+      return;
     }
-  }
+  };
 
-
-  let userInfo = {}
-  let role = ""
-  if (localStorage.getItem("userInfo")) {
-    userInfo = JSON.parse(localStorage.getItem("userInfo"))
-    role = userInfo.role
+  let userInfo = {};
+  let role = '';
+  if (localStorage.getItem('userInfo')) {
+    userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    role = userInfo.role;
   }
 
   useEffect(() => {
-    if (role === "user") {
-      navigate("/main")
-    } else if (role === "admin") {
-      navigate("/admin_main")
+    if (role === 'user') {
+      navigate('/main');
+    } else if (role === 'admin') {
+      navigate('/admin_main');
     } else {
-      navigate("/admin-login")
+      navigate('/admin-login');
     }
-  }, [navigate, role])
-
+  }, [navigate, role]);
 
   return (
     <div className="AdminLoginWapper">
       {/* <AdminLogin /> */}
-      <div className='adminLoginContainer'>
+      <div className="adminLoginContainer">
         <TopIcon title="後台登入" />
 
         {/* 記得有資料後，使用.map重複渲染 */}
@@ -103,20 +98,13 @@ export const AdminLoginPage = () => {
             maxLength="20"
           />
         </form>
-        <div className='btnGroup'>
-          <OrangeBtn
-            way="登入"
-            onClick={handleClick}
-          />
-          <div className='aLink'>
-            <Link to="/login">
-              前台登入
-            </Link>
-
+        <div className="btnGroup">
+          <OrangeBtn way="登入" onClick={handleClick} />
+          <div className="aLink">
+            <Link to="/login">前台登入</Link>
           </div>
         </div>
       </div>
-
     </div>
-  )
+  );
 };
