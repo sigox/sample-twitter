@@ -10,22 +10,26 @@ import MainPage from 'pages/MainPage/MainPage';
 import PersonalMainPage from 'pages/MainPage/PersonalMainPage';
 import SettingPage from 'pages/MainPage/SettingPage';
 
+// 引入 context
+import { AuthProvider } from 'context/AuthContext';
 
 function App() {
   return (
     <div className="app">
       <BrowserRouter>
-        <Routes>
-          <Route path="login" element={<LoginPage />} />
-          <Route path="admin-login" element={<AdminLoginPage />} />
-          <Route path="signup" element={<SignUpPage />} />
-          <Route path="admin_main" element={<AdminMainPage />} />
-          <Route path="admin_users" element={<AdminUserPage />} />
-          <Route path="main" element={<MainPage />} />
-          <Route path="users" element={<PersonalMainPage />} />
-          <Route path="setting" element={<SettingPage />} />
-          <Route path="*" element={<HomePage />} />
-        </Routes>
+        <AuthProvider>
+          <Routes>
+            <Route path="login" element={<LoginPage />} />
+            <Route path="admin-login" element={<AdminLoginPage />} />
+            <Route path="signup" element={<SignUpPage />} />
+            <Route path="admin_main" element={<AdminMainPage />} />
+            <Route path="admin_users" element={<AdminUserPage />} />
+            <Route path="main" element={<MainPage />} />
+            <Route path="users" element={<PersonalMainPage />} />
+            <Route path="setting" element={<SettingPage />} />
+            <Route path="*" element={<HomePage />} />
+          </Routes>
+        </AuthProvider>
       </BrowserRouter>
     </div>
   );

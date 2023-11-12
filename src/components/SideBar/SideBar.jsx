@@ -58,11 +58,11 @@ export const SideBar = () => {
   }
 
   // 後台登出
-  // const handleAdminLogout = () => {
-  //   // localStorage.removeItem('authToken');
-  //   // localStorage.removeItem('userInfo')
-  //   navigate('/admin-login')
-  // }
+  const handleAdminLogout = () => {
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('userInfo')
+    navigate('/login')
+  }
 
   return (
     <div className='SideBarWrapper'>
@@ -117,7 +117,7 @@ export const SideBar = () => {
         {/* bottom */}
         <div
           className="bottomSection"
-        // onClick={handleAdminLogout}
+          onClick={handleAdminLogout}
         >
           <div className="iconBox">
             <LogoutIcon className='icon' />

@@ -1,5 +1,6 @@
 // import scss
 import './AdminSideBar.scss'
+import Swal from 'sweetalert2'
 
 // import dependencies
 import { useNavigate, useLocation, } from 'react-router-dom' //記得加 Navigate, useLocation,
@@ -24,9 +25,7 @@ import { ReactComponent as LogoutIcon } from 'assets/icons/logout.svg'
 export const AdminSideBar = () => {
   const navigate = useNavigate()
   const path = useLocation().pathname
-  // const { adminPage, setAdminPage } = useContext(PageContext)
 
-  // 暫時加的
   const [adminPage, setAdminPage] = useState()
 
   useEffect(() => {
@@ -50,11 +49,21 @@ export const AdminSideBar = () => {
   }
 
   // 後台登出
-  // const handleAdminLogout = () => {
-  //   // localStorage.removeItem('authToken');
-  //   // localStorage.removeItem('userInfo')
-  //   navigate('/admin-login')
-  // }
+  const handleAdminLogout = () => {
+    // 是否登出訊息
+    Swal.fire({
+      position: 'top',
+      title: '是否登出?',
+      timer: 1000,
+      icon: 'question',
+      showConfirmButton: true,
+    });
+
+
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('userInfo')
+    navigate('/admin-login')
+  }
 
   return (
     <div className='adminSideBarWrapper'>
@@ -96,7 +105,7 @@ export const AdminSideBar = () => {
         {/* bottom */}
         <div
           className="bottomSection"
-        // onClick={handleAdminLogout}
+          onClick={handleAdminLogout}
         >
           <div className="iconBox">
             <LogoutIcon className='icon' />
