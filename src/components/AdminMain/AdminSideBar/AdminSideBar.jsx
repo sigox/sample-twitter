@@ -50,16 +50,7 @@ export const AdminSideBar = () => {
 
   // 後台登出
   const handleAdminLogout = () => {
-    // 是否登出訊息
-    Swal.fire({
-      position: 'top',
-      title: '是否登出?',
-      timer: 1000,
-      icon: 'question',
-      showConfirmButton: true,
-    });
-
-
+    
     localStorage.removeItem('authToken');
     localStorage.removeItem('userInfo')
     navigate('/admin-login')

@@ -21,35 +21,31 @@ axiosInstance.interceptors.request.use(
   },
 );
 
-
 // admin取得所有使用者
-export const getAllUserAdmin = async () => {
+export const getAllUsersAdmin = async () => {
   try {
-    const res = await axiosInstance.get(`${baseURL}/admin/users`)
+    const res = await axiosInstance.get(`${baseURL}/admin/users`);
 
-     console.log('getAllUsersAdmin回傳值', res)
+    // console.log('getAllUsersAdmin回傳值', res.data);
 
-     return res
-
-  } catch(error) {
-    console.log("[Get Admin all users Failed]", error)
-
-      throw error
+    return res.data;
+  } catch (error) {
+    console.log('[Get Admin all users Failed]', error);
+    throw error;
   }
-}
-
+};
 
 //admin瀏覽所有的tweets
 export const getAllTweetsAdmin = async () => {
   try {
-    const res = await axiosInstance.get(`${baseURL}/admin/tweets`)
+    const res = await axiosInstance.get(`${baseURL}/admin/tweets`);
 
-    console.log('getAllTweetsAdmin: ' ,res)
+    console.log('getAllTweetsAdmin: ', res);
 
-    return res
+    return res;
   } catch (error) {
-    console.error("[Get Admin all tweets Failed]: ", error)
+    console.error('[Get Admin all tweets Failed]: ', error);
 
-    throw error
+    throw error;
   }
-}
+};
